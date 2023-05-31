@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>local storage example</title>
+        
+    </head>
+    <body>
+        <h1>local storage example</h1>
+        <input type="text" id="inputfield" placeholder="enter a value">
+        <button onclick="savedata()">save</button>
+        <button onclick="retrivedata()">retrive</button>
+        <button onclick="cleardata()">clear</button>
+        <script>
+            function savedata(){
+                var value=document.getElementById("inputfield").value;
+                localstorage.setItem("data",value);
+                console.log("data saved to local storage:"+value);
+            }
+            function retrivedata(){
+                var value=localstorage.getItem("data");
+                if(value){
+                    console.log("data retrive from localstorage+"value);
+                }else{
+                    console.log("no data found in local storage");
+                }
+                function cleardata{
+                    localstorage.removeitem("data");
+                    console.log("data cleared from localstorage");
+                }
+            }
+        </script>
+    </body>
+</html>
