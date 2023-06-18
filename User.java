@@ -8,40 +8,68 @@ import jakarta.persistence.Id;
 public class User {
     @Id
     @GeneratedValue
-    private Long id;
-    private String name;
-    private String userName;
+    private Long Id;
+    private String PassengerName;
     private String email;
+    private Long Phoneno;
+    private String FlightName;
+    private String Depature;
+    private String Destination;
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
-    public String getName() {
-        return name;
+
+
+    public String getPassengerName() {
+        return PassengerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassengerName(String PassengerName) {
+        this.PassengerName = PassengerName;
     }
+    public Long getPhoneno() { return Phoneno; }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setPhoneno(Long phoneno) {
+        this.Phoneno = phoneno;
     }
 
     public String getEmail() {
         return email;
     }
 
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFlightName() {
+        return FlightName;
+    }
+
+    public void setFlightName(String flightName) {
+        this.FlightName = flightName;
+    }
+
+    public String getDepature() {
+
+        return Depature;
+    }
+
+    public void setDepature(String depature) {
+        this.Depature = depature;
+    }
+
+    public String getDestination() {
+        return Destination;
+    }
+
+    public void setDestination(String destination) {
+        this.Destination = destination;
     }
 }

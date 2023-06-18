@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("http://localhost:3005")
 @RestController
 public class UserController {
 
@@ -24,9 +24,12 @@ public class UserController {
     @PutMapping("/update/{id}")
     User updateUser(@RequestBody User newUser, @PathVariable Long id){
         return userRepository.findById(id).map(user -> {
-            user.setUserName(newUser.getUserName());
-            user.setName(newUser.getName());
+            user.setPassengerName(newUser.getPassengerName());
             user.setEmail(newUser.getEmail());
+            user.setPhoneno(newUser.getPhoneno());
+            user.setFlightName(newUser.getFlightName());
+            user.setDepature(newUser.getDepature());
+            user.setDestination(newUser.getDestination());
             return userRepository.save(user);
         }).orElseThrow(()->new UserNotFoundException(id));
     }
@@ -35,5 +38,13 @@ public class UserController {
         return userRepository.findById(id)
 
                 .orElseThrow(()->new UserNotFoundException(id));
+    }
+    @DeleteMapping("/deleteUser/{id}")
+    String deleteUser(@PathVariable Long id) {
+        if (!userRepository.existsById(id)) {
+            throw new UserNotFoundException(id);
+        }
+        userRepository.deleteById(id);
+        return "deleted user";
     }
 }
